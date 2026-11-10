@@ -20,5 +20,11 @@ pipeline {
                 bat 'python -m pytest -v'
             }
         }
+
+        stage('Build Docker Image') {
+            steps {
+                bat 'docker build -t jenkins-python-demo:latest .'
+            }
+        }
     }
 }
