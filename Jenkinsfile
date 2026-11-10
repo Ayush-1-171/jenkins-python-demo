@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -8,15 +9,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Install Dependencies') {
             steps {
-                echo 'Build completed'
+                bat 'python -m pip install -r requirements.txt'
             }
         }
 
-        stage('Test') {
+        stage('Run Tests') {
             steps {
-                echo 'Testing completed'
+                bat 'python -m pytest -v'
             }
         }
     }
